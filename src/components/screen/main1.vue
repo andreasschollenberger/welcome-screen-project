@@ -52,13 +52,13 @@ defineProps({
     font-size: 28px;
     font-weight: 900;
     line-height: 36px;
-    color: rgb(241, 163, 62);
+    color: rgb(226, 218, 206);
 }
 .normal{
     font-family: "Inter", sans-serif;
     font-size: 28px;
     line-height: 36px;
-    color: rgb(241, 163, 62);
+    color: rgb(226, 218, 206);
 }
 .blue{
     padding: 50px;
