@@ -3,6 +3,17 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import haeder from './components/screen/haeder.vue'
 import main1 from './components/screen/main1.vue'
 import footer1 from './components/screen/footer1.vue'
+import { useHead } from "@unhead/vue";
+
+useHead({
+  titel: "Screen Welcome",
+  meta: [
+    {
+      name: "description",
+      content: "Mein Cooler Willkomens Screen",
+    },
+  ],
+});
 
 
 const sheet_id = import.meta.env.VITE_GOOGLE_SHEET_ID;
@@ -41,11 +52,12 @@ const api_token = import.meta.env.VITE_GOOGLE_API_KEY;
 
   // AUFRUF DER FUNKTION
   fetchData();
+
+  // jede Stunde wird der inhalt neu geladen im Browser
   const timeInterval = ref("");
   onMounted(() => {
     timneInterval.value = setIntervyal(() => {
       fetchData();
-    getData();
     }, 1000 * 60 * 60);
   });
   onBeforeUnmount(() => {
