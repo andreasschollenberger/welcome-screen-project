@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import haeder from './components/screen/haeder.vue'
 import main1 from './components/screen/main1.vue'
 import footer1 from './components/screen/footer1.vue'
@@ -41,7 +41,16 @@ const api_token = import.meta.env.VITE_GOOGLE_API_KEY;
 
   // AUFRUF DER FUNKTION
   fetchData();
-    
+  const timeInterval = ref("");
+  onMounted(() => {
+    timneInterval.value = setIntervyal(() => {
+      fetchData();
+    getData();
+    }, 1000 * 60 * 60);
+  });
+  onBeforeUnmount(() => {
+    clearInterval(timeInterval.value);
+  });
 
   // innerhalb html (template tags):
 
